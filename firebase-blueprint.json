@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information and study stats",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "studyStreak": { "type": "number" },
+        "totalWords": { "type": "number" },
+        "sessionsCompleted": { "type": "number" },
+        "lastActive": { "type": "string", "format": "date-time" },
+        "targetBand": { "type": "number" },
+        "examDate": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "LexiWord": {
+      "title": "Vocabulary Word",
+      "description": "A word saved to the user's LexiVault",
+      "type": "object",
+      "properties": {
+        "word": { "type": "string" },
+        "meaning": { "type": "string" },
+        "definition": { "type": "string" },
+        "ipa": { "type": "string" },
+        "example": { "type": "string" },
+        "collocations": { "type": "array" },
+        "synonyms": { "type": "array" },
+        "savedAt": { "type": "string", "format": "date-time" },
+        "isFavorite": { "type": "boolean" }
+      },
+      "required": ["word", "meaning"]
+    },
+    "SpeakingSession": {
+      "title": "Speaking Session",
+      "description": "Record of a speaking practice session",
+      "type": "object",
+      "properties": {
+        "topic": { "type": "string" },
+        "question": { "type": "string" },
+        "transcript": { "type": "string" },
+        "feedback": { "type": "object" },
+        "audioUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["question", "transcript"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "users/{userId}/lexivault/{wordId}": {
+      "schema": "LexiWord",
+      "description": "User vocabulary"
+    },
+    "users/{userId}/speakingSessions/{sessionId}": {
+      "schema": "SpeakingSession",
+      "description": "History of speaking practice"
+    }
+  }
+}

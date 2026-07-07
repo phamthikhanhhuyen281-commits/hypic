@@ -1,0 +1,6 @@
+{
+  "name": "HyPilot - IELTS Learning Engine",
+  "description": "A startup-grade EdTech platform for IELTS preparation featuring AI-powered speaking labs, dictation engines, writing boosters, and smart vocabulary vault.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["AI-powered Feedback", "Speech-to-Text", "Writing Upgrade", "Study Planner"]
+}
